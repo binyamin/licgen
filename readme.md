@@ -1,6 +1,6 @@
 # LicGen
 ![Node Version](https://img.shields.io/node/v/licgen)
-![NPM Version](https://img.shields.io/npm/v/licgen)
+![Downloads](https://img.shields.io/npm/dt/licgen)
 ![License](https://img.shields.io/github/license/b3u/licgen)
 
 Generate a license for your project. All from the command line.

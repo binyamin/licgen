@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/b3u/license-init/issues"
   },
-  "homepage": "https://github.com/b3u/license-init#readme"
+  "homepage": "https://github.com/b3u/license-init#readme",
+  "engines" : {
+    "node" : ">=8.16.2"
+  }
 }
