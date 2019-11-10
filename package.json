@@ -1,0 +1,26 @@
+{
+  "name": "license-init",
+  "version": "1.0.0",
+  "description": "Generate a license for your project",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "cli",
+    "license",
+    "generator"
+  ],
+  "author": "Binyamin Aron Green (https://b3u.netlify.com)",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "inquirer": "^7.0.0",
+    "minimist": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b3u/license-init.git"
+  },
+  "bugs": {
+    "url": "https://github.com/b3u/license-init/issues"
+  },
+  "homepage": "https://github.com/b3u/license-init#readme"
+}
