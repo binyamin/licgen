@@ -20,18 +20,33 @@ const getFullname = () => {
     }
 }
 
+/**
+ * 
+ * @param {String} str The string to "hashify"
+ */
 
 const hashify = str => {
     return String(str).toLowerCase().replace(/\s|\./g, '-');
 }
-
-const isLicSupported = lic => {
-    return Boolean(list.filter(l => (hashify(l.name) === hashify(lic)))[0]);
+/**
+ * 
+ * @param {String} lic The license type
+ */
+const getLicense = lic => {
+    return list.filter(l => {
+        let subArray = (l.aliases || []).concat(l.name);
+        return subArray.filter(t => hashify(t) === hashify(lic)).length > 0
+    })[0]
 }
+/**
+ * 
+ * @param {String} lic The license to create
+ */
 
 const create = async (lic) => {
+    console.log(`Creating ${lic} license` )
     let questions = [];
-    let {txt, notice} = list.filter(license => (hashify(license.name) === hashify(lic)))[0];
+    let {txt, notice} = getLicense(lic);
     let opts = txt.match(/\[[^\[\]]+\]/g) ? txt.match(/\[[^\[\]]+\]/g).map(w => w.slice(1, -1).toLowerCase()) : [];
 
     if(opts.includes('year')) {
@@ -87,6 +102,10 @@ const create = async (lic) => {
     }
 }
 
+/**
+ * @description Prompt the user to choose a license type
+ */
+
 const prompt = async () => {
     let {type} = await inquirer.prompt({
         name: "type",
@@ -102,5 +121,5 @@ module.exports = {
     create,
     prompt,
     hashify,
-    isLicSupported
+    getLicense
 }

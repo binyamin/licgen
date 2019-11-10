@@ -8,19 +8,17 @@ let pkg;
 if (fs.existsSync('package.json')) {
     pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 }
-/**
- * @todo Support Aliasing licenses
- */
 
 const run = async () => {
-    console.log("NOTE: This will overwrite any file named `license.md` existing in the root directory.")
+    console.log('Running LicGen...')
+    console.log(chalk.yellow("This will overwrite any file named `license.md` existing in the root directory."))
     if(args.type && args.type !== true) {
         // Is requested license supported?
-        if(util.isLicSupported(util.hashify(args.type))) {
-            util.create(args.type)
+        if(util.getLicense(util.hashify(args.type))) {
+            return util.create(util.getLicense(util.hashify(args.type)).name)
         } else {
             console.log(chalk.red('The license you requested either could not be found or is not supported. You may open an issue, if you wish.'));
-            util.prompt();
+            return util.prompt();
         }
     }
     
@@ -32,7 +30,7 @@ const run = async () => {
         // License found
         console.log('Identified license from package.json')
 
-        if(util.isLicSupported(util.hashify(pkg.license))) {
+        if(util.getLicense(util.hashify(pkg.license))) {
             util.create(pkg.license);
         } else {
             console.log('License in package.json is not supported or not readable')
