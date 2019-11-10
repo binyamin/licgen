@@ -3,8 +3,30 @@ const fs = require('fs');
 const chalk = require('chalk');
 const {list} = require('./list.json');
 
+const getFullname = () => {
+    let pkg;
+    if (fs.existsSync('package.json')) {
+        pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+    }
+    let {author} = pkg;
+    
+    if (typeof author === "object") {
+        return author.name
+    }
+    else if (typeof author === 'string') {
+        return author.replace(/(\(.+\))|(\<.+\>)/g, '').trim();
+    } else {
+        return null;
+    }
+}
+
+
 const hashify = str => {
     return String(str).toLowerCase().replace(/\s|\./g, '-');
+}
+
+const isLicSupported = lic => {
+    return Boolean(list.filter(l => (hashify(l.name) === hashify(lic)))[0]);
 }
 
 const create = async (lic) => {
@@ -24,6 +46,20 @@ const create = async (lic) => {
         })
 
         opts = opts.filter(o => o !== 'year');
+    }
+
+    if(opts.includes('fullname')) {
+        questions.push({
+            name: "fullname",
+            type: "input",
+            message: "Please enter your full name",
+            default: getFullname(),
+            validate: (n) => {
+                return (n !== "") || 'Please enter your name'
+            }
+        })
+
+        opts = opts.filter(o => o !== 'fullname');
     }
 
     opts.forEach(option => {
@@ -47,6 +83,7 @@ const create = async (lic) => {
         console.log(chalk.yellow('You should add the following text to your readme:'))
         console.log(notice)
         console.log(chalk.yellow('End of Notice'))
+        process.exit();
     }
 }
 
@@ -64,5 +101,6 @@ const prompt = async () => {
 module.exports = {
     create,
     prompt,
-    hashify
+    hashify,
+    isLicSupported
 }

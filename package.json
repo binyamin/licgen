@@ -1,5 +1,5 @@
 {
-  "name": "license-init",
+  "name": "licgen",
   "version": "1.0.0",
   "description": "Generate a license for your project",
   "license": "MIT",
@@ -7,7 +7,8 @@
   "keywords": [
     "cli",
     "license",
-    "generator"
+    "generator",
+    "init"
   ],
   "author": "Binyamin Aron Green (https://b3u.netlify.com)",
   "dependencies": {
