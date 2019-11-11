@@ -18,10 +18,11 @@ yarn add -g licgen
 
 ## Use
 ```sh
-licgen (--type=<MIT>)
+licgen [--type=mit]
 ```
+If you have a license listed in your `package.json`, it will choose that license for you. If you don't, it will prompt you to choose a license.
 
-Automatically detects license type from package.json. Or, set `lic` equal to requested license type. If you don't know what you want, that's fine as well. Just follow the prompts.
+Alternatively, choose your *own* license with the `type` argument.
 
 **Supported Licenses**
   * MIT
@@ -31,11 +32,10 @@ Automatically detects license type from package.json. Or, set `lic` equal to req
   * _Your favorite license via PR..._ :grinning:
 
 ## Contribute
-To add a license, add the information in the `list.json` using the following format:
+To add a license, add the necessary information in [list.json](https://github.com/b3u/licgen/blob/master/list.json) using the following format:
 ```js
 {
   "list": [
-// ...
     {
       "name": "Full name of the license",
       "aliases": ["Other names for the license that a user might type"],
@@ -48,4 +48,4 @@ To add a license, add the information in the `list.json` using the following for
 
 ## License
 Copyright © 2019 [Binyamin Green](https://b3u.netlify.com)\
-This project uses the [MIT License](./license.md)
+This project uses the [MIT License](https://github.com/b3u/licgen/blob/master/LICENSE.md)

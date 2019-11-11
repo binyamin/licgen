@@ -1,9 +1,9 @@
 {
   "name": "licgen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate a license for your project",
   "license": "MIT",
-  "main": "index.js",
+  "main": "./index.js",
   "keywords": [
     "cli",
     "license",
@@ -24,6 +24,9 @@
     "url": "https://github.com/b3u/license-init/issues"
   },
   "homepage": "https://github.com/b3u/license-init#readme",
+  "bin": {
+    "licgen": "./index.js"
+  },
   "engines" : {
     "node" : ">=8.16.2"
   }
