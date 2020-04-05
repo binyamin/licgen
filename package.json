@@ -12,22 +12,22 @@
   ],
   "author": "Binyamin Aron Green (https://b3u.netlify.com)",
   "dependencies": {
-    "chalk": "^2.4.2",
-    "inquirer": "^7.0.0",
-    "minimist": "^1.2.0"
+    "chalk": "^4.0.0",
+    "inquirer": "^7.1.0",
+    "minimist": "^1.2.5"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/b3u/license-init.git"
+    "url": "git+https://github.com/b3u/licgen.git"
   },
   "bugs": {
-    "url": "https://github.com/b3u/license-init/issues"
+    "url": "https://github.com/b3u/licgen/issues"
   },
-  "homepage": "https://github.com/b3u/license-init#readme",
+  "homepage": "https://github.com/b3u/licgen#readme",
   "bin": {
     "licgen": "./index.js"
   },
-  "engines" : {
-    "node" : ">=8.16.2"
+  "engines": {
+    "node": ">=8.16.2"
   }
 }
